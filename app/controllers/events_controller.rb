@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /events
   # GET /events.xml
   def index
@@ -40,11 +42,12 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
+    params[:event][:user_id] = current_user.id
     @event = Event.new(params[:event])
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
+        format.html { redirect_to(events_path, :notice => 'Event was successfully created.') }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }

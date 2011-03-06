@@ -12,6 +12,8 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.select :event_type, [['Feeding', 'feeding'],['Diaper', 'diaper']] %>
+    <br/>
+    <%= f.submit :Save %>
   </div>
 <% end %>

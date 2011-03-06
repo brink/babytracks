@@ -1,17 +1,11 @@
 <h1>Listing events</h1>
 
 <table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @events.each do |event| %>
   <tr>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to event.event_type.humanize, edit_event_path(event)%></td>
+    <td><%= event.created_at.to_formatted_s(:long) %></td>
   </tr>
 <% end %>
 </table>
