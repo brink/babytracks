@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.select :event_type, [['Feeding', 'feeding'],['Diaper', 'diaper']] %>
+    <%= f.select :event_type, [['Feeding', 'feeding'],['Diaper', 'diaper']], :selected => params[:event_type] %>
     <br/>
     <%= f.submit :Save %>
   </div>

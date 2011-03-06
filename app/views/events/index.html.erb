@@ -1,4 +1,8 @@
-<h1>Listing events</h1>
+<h1>Baby Events</h1>
+<p>
+  <%= link_to 'New Feeding', new_event_path(:event_type => "feeding") %>
+  <%= link_to 'New Diaper', new_event_path(:event_type => "diaper") %>
+</p>
 
 <table>
 
@@ -10,6 +14,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Event', new_event_path %>
