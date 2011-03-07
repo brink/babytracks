@@ -1,9 +1,9 @@
 <h1>Baby Events</h1>
 <img src="<%= google_api_graph %>"/>
 <p>
-  <strong><%= link_to 'New Feeding', new_event_path(:event_type => "feeding") %>
+  <strong><%= link_to 'New Feeding', new_event_path(:event_type => "feeding"), :id => 'x_feed_link' %>
   |
-  <%= link_to 'New Diaper', new_event_path(:event_type => "diaper") %>
+  <%= link_to 'New Diaper', new_event_path(:event_type => "diaper"), :id => 'x_diaper_link' %>
   </strong>
 </p>
 
