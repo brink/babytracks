@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.by_user(current_user)
+    @events = Event.by_user(current_user).limit(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -63,7 +63,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
+        format.html { redirect_to(events_path, :notice => 'Event was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -12,6 +12,9 @@
   <% end %>
 
   <div class="actions">
+    <% unless @event.new_record? %>
+      <%= f.datetime_select :created_at %><br />
+    <% end %>
     <%= f.select :event_type, [['Feeding', 'feeding'],['Diaper', 'diaper']], :selected => params[:event_type] %>
     <br/>
     <%= f.submit :Save %>
