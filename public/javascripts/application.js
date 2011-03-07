@@ -4,7 +4,6 @@
 $(document).ready(function() {
   jQuery("#x_feed_link").click(function(event) {
     event.preventDefault();
-    alert('foo');
     $.ajax({
       url: "/events",
       type: "POST",
@@ -18,7 +17,6 @@ $(document).ready(function() {
   });
   jQuery("#x_diaper_link").click(function(event) {
     event.preventDefault();
-    alert('foo');
     $.ajax({
       url: "/events",
       type: "POST",
