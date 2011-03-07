@@ -19,6 +19,7 @@ module EventsHelper
     else
       diapers_vals = []
     end
+
     # from http://imagecharteditor.appspot.com/
     url = %W(http://chart.apis.google.com/chart
        ?chxl=0:#{date_range.inject(""){|res,e| res + "|" + e.strftime('%a')}}

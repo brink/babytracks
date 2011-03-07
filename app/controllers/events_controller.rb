@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.by_user(current_user).limit(10)
+    @events = Event.by_user(current_user)
 
     respond_to do |format|
       format.html # index.html.erb
