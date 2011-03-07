@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   }
 
   scope :arranged_by_day, lambda{
-    group("events.created_at")
+    group("DATE(events.created_at)")
   }
   
 end
