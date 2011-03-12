@@ -17,7 +17,11 @@ a:visited { color: #666; }
 a:hover { color: #fff; background-color:#000; }
 
 div.field, div.actions {
+  float: left;
   margin-bottom: 10px;
+}
+div#actions_container {
+  overflow:auto;
 }
 
 #notice {

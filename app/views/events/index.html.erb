@@ -1,19 +1,19 @@
 <h1>Baby Events</h1>
-<img src="<%= google_api_graph %>"/>
-<p>
-  <strong><%= link_to 'New Feeding', new_event_path(:event_type => "feeding"), :id => 'x_feed_link' %>
-  |
-  <%= link_to 'New Diaper', new_event_path(:event_type => "diaper"), :id => 'x_diaper_link' %>
-  </strong>
-</p>
+<div id="graph_container">
+  <img src="<%= google_api_graph %>" id="x_graph_image"/>
+</div>
 
-<table>
-
-<% @events.each do |event| %>
-  <tr>
-    <td><%= link_to event.event_type.humanize, edit_event_path(event)%></td>
-    <td><%= event.created_at.to_formatted_s(:long) %></td>
-  </tr>
-<% end %>
-</table>
-
+<div id="actions_container" >
+  <%= render "inline_form",  {:event_type => "feeding" } %>
+  <%= render "inline_form", {:event_type => "diaper" } %>
+</div>
+<div id="history_container">
+  <table>
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= link_to event.event_type.humanize, edit_event_path(event)%></td>
+      <td><%= event.created_at.to_formatted_s(:long) %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
