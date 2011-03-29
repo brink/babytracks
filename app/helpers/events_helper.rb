@@ -3,8 +3,8 @@ module EventsHelper
     feedings = Event.by_user(current_user).feedings.arranged_by_day.size
     diapers = Event.by_user(current_user).diapers.arranged_by_day.size 
 
-    start_date = Date.today - 2.days
-    end_date = Date.today + 2.days
+    start_date = Date.today - 5.days
+    end_date = Date.today 
     date_range = (start_date..end_date).to_a
 
     date_range = date_range.to_a
@@ -20,7 +20,17 @@ module EventsHelper
       diapers_vals = []
     end
 
-    # from http://imagecharteditor.appspot.com/
+    url = Gchart.line(:size => '640x200',
+                :axis_with_labels => 'x,y',
+                :title => "Feedings and Diaperings",
+                :legend => ["Feedings", "Diaperings"],
+                :bar_colors => ["FF0000", "00FF00"],
+                :data => [feeding_vals,diaper_vals],
+                :axis_labels => [date_range.collect{|d| d.strftime('%a')}],
+                :axis_range => [nil,[0,20,2]]
+               )
+    return url
+               # from http://imagecharteditor.appspot.com/
     url = %W(http://chart.apis.google.com/chart
        ?chxl=0:#{date_range.inject(""){|res,e| res + "|" + e.strftime('%a')}}
        &chs=640x220

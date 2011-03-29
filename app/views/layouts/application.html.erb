@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
+  <![endif]-->
   <title>Babytracks</title>
   <%= stylesheet_link_tag :all %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
   <%= javascript_include_tag "application.js" %>
   <%= csrf_meta_tag %>
   </head>
-<body>
-  <ul class="hmenu">
-    <%= render 'devise/menu/login_items' %>
-  </ul>
-
-  <%= yield %>
-
+  <body>
+    <nav>
+    <ul class="hmenu">
+      <%= render 'devise/menu/login_items' %>
+    </ul>
+  </nav>
+  <article> 
+    <%= yield %>
+  </article>
 </body>
 </html>

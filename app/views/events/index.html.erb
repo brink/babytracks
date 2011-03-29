@@ -1,19 +1,33 @@
-<h1>Baby Events</h1>
-<img src="<%= google_api_graph %>"/>
+<section>
+  <header>
+    <h1>Baby Events</h1>
+  </header>
+  <img src="<%= google_api_graph %>"/>
+</section>
+<section>
 <p>
   <strong><%= link_to 'New Feeding', new_event_path(:event_type => "feeding"), :id => 'x_feed_link' %>
   |
   <%= link_to 'New Diaper', new_event_path(:event_type => "diaper"), :id => 'x_diaper_link' %>
   </strong>
 </p>
+</section>
 
-<table>
-
-<% @events.each do |event| %>
-  <tr>
-    <td><%= link_to event.event_type.humanize, edit_event_path(event)%></td>
-    <td><%= event.created_at.to_formatted_s(:long) %></td>
-  </tr>
-<% end %>
-</table>
-
+<section>
+<table id="x_events">
+  <caption>Current Baby Activity</caption>
+  <thead>
+    <tr>
+      <th scope="col">Event Type</th>
+      <th scope="col">Date</th>
+    </thead>
+    <tbody>
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= link_to event.event_type.humanize, edit_event_path(event)%></td>
+      <td><%= event.created_at.to_formatted_s(:long) %></td>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+</section>
