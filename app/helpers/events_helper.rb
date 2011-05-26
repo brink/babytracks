@@ -3,8 +3,17 @@ module EventsHelper
     feedings = Event.by_user(current_user).feedings.arranged_by_day.size
     diapers = Event.by_user(current_user).diapers.arranged_by_day.size 
 
-    start_date = Date.today - 2.days
-    end_date = Date.today + 2.days
+    max_d = diapers.max[1]
+    max_f = feedings.max[1]
+
+    if max_d > max_f
+      max = max_d
+    else
+      max = max_f
+    end
+
+    start_date = Date.today - 4.days
+    end_date = Date.today + 1.days
     date_range = (start_date..end_date).to_a
 
     date_range = date_range.to_a
@@ -24,9 +33,9 @@ module EventsHelper
     url = %W(http://chart.apis.google.com/chart
        ?chxl=0:#{date_range.inject(""){|res,e| res + "|" + e.strftime('%a')}}
        &chs=640x220
-       &chxr=1,0,20
+       &chxr=1,0,#{max}
        &chxt=x,y
-       &chds=0,0,0,20,0,0,0,20
+       &chds=0,0,0,#{max},0,0,0,#{max}
        &cht=lxy
        &chg=0,10,0,0
        &chco=3072F3,FF0000
