@@ -46,11 +46,13 @@ Babytracks::Application.configure do
   config.action_mailer.default_url_options = { :host => 'young-spring-682.heroku.com' }
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-ActionMailer::Base.smtp_settings = {
-  :address  => "mx1.sub3.homie.mail.dreamhost.com",
-  :port  => 25,
-  :user_name  => "brink@unicornrobot.net",
-  :password  => "Argabuthon",
-  :authentication  => :login
-}
+  ActionMailer::Base.delivery_method = :smtp
+
+  ActionMailer::Base.smtp_settings = {
+    :address  => "sub3.mail.dreamhost.com",
+    :port  => 587,
+    :user_name  => "brink@fleshy.org.nz",
+    :password  => "Ariabuthon",
+    :authentication  => :login
+  }
 end
