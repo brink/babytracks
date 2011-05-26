@@ -43,6 +43,7 @@ Babytracks::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
 
+  config.action_mailer.default_url_options = { :host => 'young-spring-682.heroku.com' }
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 ActionMailer::Base.smtp_settings = {
