@@ -4,8 +4,12 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.by_user(current_user)
-
+    if params[:date]
+      @current = DateTime.parse(params[:date])
+    else 
+      @current = DateTime.now
+    end
+    @events = Event.by_user(current_user).by_date(@current.to_s).order('created_at DESC')
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }

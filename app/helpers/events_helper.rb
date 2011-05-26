@@ -1,10 +1,12 @@
 module EventsHelper
-  def google_api_graph(before_today=0)
-    feedings = Event.by_user(current_user).center_by_days_ago(before_today).feedings.arranged_by_day.size
-    diapers = Event.by_user(current_user).center_by_days_ago(before_today).diapers.arranged_by_day.size 
+  def google_api_graph(target_date)
+    before_today = (Date.today - Date.parse(target_date.to_s)).to_i
 
-    max_d = diapers.max[1]
-    max_f = feedings.max[1]
+    feedings = Event.by_user(current_user).feedings.arranged_by_day.size
+    diapers = Event.by_user(current_user).diapers.arranged_by_day.size 
+
+      max_d = diapers.max[1] rescue 0
+      max_f = feedings.max[1] rescue 0
 
     if max_d > max_f
       max = max_d

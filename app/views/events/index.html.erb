@@ -1,6 +1,6 @@
-<h1>Baby Events for <%= pretty_date(DateTime.now - params[:days_ago].to_i) %></h1>
+<h1>Baby Events for <%= pretty_date(@current ) %></h1>
 <div id="graph_container">
-  <img src="<%= google_api_graph %>" id="x_graph_image"/>
+  <img src="<%= google_api_graph(@current) %>" id="x_graph_image"/>
 </div>
 
 <div id="record-events" >
@@ -8,6 +8,10 @@
   <%= render "inline_form", {:event_type => "diaper" } %>
 </div>
 <div id="history">
+  <div class="pagination">
+    <%= link_to '&lt;&lt; Previous'.html_safe, :date => @current.yesterday.strftime('%Y-%m-%d') %>
+    <%= link_to 'Next &gt;&gt;'.html_safe, :date => @current.tomorrow.strftime('%Y-%m-%d') %>
+  </div>
   <dl>
   <% @events.each do |event| %>
   <dt><%= link_to event.event_type.humanize, edit_event_path(event)%></dt>
