@@ -51,7 +51,7 @@ Babytracks::Application.configure do
   ActionMailer::Base.smtp_settings = {
     :address  => "sub3.mail.dreamhost.com",
     :port  => 587,
-    :user_name  => "brink@fleshy.org.nz",
+    :user_name  => "auto@fleshy.org.nz",
     :password  => "Ariabuthon",
     :authentication  => :login
   }

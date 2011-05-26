@@ -24,14 +24,5 @@ Babytracks::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  ActionMailer::Base.delivery_method = :smtp
-
-  ActionMailer::Base.smtp_settings = {
-    :address  => "sub3.mail.dreamhost.com",
-    :port  => 587,
-    :user_name  => "brink@fleshy.org.nz",
-    :password  => "Argabuthon",
-    :authentication  => :login
-  }
 end
 
