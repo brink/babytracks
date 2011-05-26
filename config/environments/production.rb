@@ -47,7 +47,7 @@ Babytracks::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 ActionMailer::Base.smtp_settings = {
-  :address  => "mail.fleshy.org.nz",
+  :address  => "mx1.sub3.homie.mail.dreamhost.com",
   :port  => 25,
   :user_name  => "brink@unicornrobot.net",
   :password  => "Argabuthon",
