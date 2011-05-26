@@ -1,3 +1,4 @@
+/*
 $(document).ready(function() {
   jQuery(".actions form").submit(function(event) {
     event.preventDefault();
@@ -13,3 +14,4 @@ $(document).ready(function() {
 
   });
 });
+*/

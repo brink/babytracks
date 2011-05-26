@@ -19,6 +19,12 @@ class Event < ActiveRecord::Base
     group("DATE(events.created_at)")
   }
 
+  scope :center_by_days_ago, lambda {|num|
+    begin_day = DateTime.now.beginning_of_day - num.days
+    end_day = DateTime.now.end_of_day - num.days
+
+    where("events.created_at >= ? AND events.created_at <= ?", begin_day, end_day)
+  }
   scope :today, lambda {
     begin_today = DateTime.now.beginning_of_day
     end_today = DateTime.now.end_of_day

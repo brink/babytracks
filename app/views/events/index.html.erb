@@ -1,19 +1,18 @@
-<h1>Baby Events</h1>
+<h1>Baby Events for <%= pretty_date(DateTime.now - params[:days_ago].to_i) %></h1>
 <div id="graph_container">
   <img src="<%= google_api_graph %>" id="x_graph_image"/>
 </div>
 
-<div id="actions_container" >
+<div id="record-events" >
   <%= render "inline_form",  {:event_type => "feeding" } %>
   <%= render "inline_form", {:event_type => "diaper" } %>
 </div>
-<div id="history_container">
-  <table>
+<div id="history">
+  <dl>
   <% @events.each do |event| %>
-    <tr>
-      <td><%= link_to event.event_type.humanize, edit_event_path(event)%></td>
-      <td><%= event.created_at.to_formatted_s(:long) %></td>
-    </tr>
+  <dt><%= link_to event.event_type.humanize, edit_event_path(event)%></dt>
+    <dd><time datetime="<%=event.created_at.to_formatted_s(:db)%>"> <%= event.created_at.to_formatted_s(:long) %></time></dd>
+    <dd class="edit-actions"><%=link_to "[x]", event,  :method => :delete %><br/></dd>
   <% end %>
-  </table>
+</dl>
 </div>

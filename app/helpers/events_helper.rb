@@ -1,7 +1,7 @@
 module EventsHelper
-  def google_api_graph
-    feedings = Event.by_user(current_user).feedings.arranged_by_day.size
-    diapers = Event.by_user(current_user).diapers.arranged_by_day.size 
+  def google_api_graph(before_today=0)
+    feedings = Event.by_user(current_user).center_by_days_ago(before_today).feedings.arranged_by_day.size
+    diapers = Event.by_user(current_user).center_by_days_ago(before_today).diapers.arranged_by_day.size 
 
     max_d = diapers.max[1]
     max_f = feedings.max[1]
@@ -12,8 +12,8 @@ module EventsHelper
       max = max_f
     end
 
-    start_date = Date.today - 4.days
-    end_date = Date.today + 1.days
+    start_date = Date.today - (6 + before_today).days
+    end_date = Date.today + ( -before_today).days
     date_range = (start_date..end_date).to_a
 
     date_range = date_range.to_a
