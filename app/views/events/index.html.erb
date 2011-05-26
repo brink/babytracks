@@ -1,4 +1,3 @@
-<h1>Baby Events for <%= pretty_date(@current ) %></h1>
 <div id="graph_container">
   <img src="<%= google_api_graph(@current) %>" id="x_graph_image"/>
 </div>
@@ -7,7 +6,9 @@
   <%= render "inline_form",  {:event_type => "feeding" } %>
   <%= render "inline_form", {:event_type => "diaper" } %>
 </div>
+
 <div id="history">
+<h2>Baby Events for <%= pretty_date(@current ) %></h2>
   <div class="pagination">
     <%= link_to '&lt;&lt; Previous'.html_safe, :date => @current.yesterday.strftime('%Y-%m-%d') %>
     <%= link_to 'Next &gt;&gt;'.html_safe, :date => @current.tomorrow.strftime('%Y-%m-%d') %>
@@ -18,5 +19,5 @@
     <dd><time datetime="<%=event.created_at.to_formatted_s(:db)%>"> <%= event.created_at.to_formatted_s(:long) %></time></dd>
     <dd class="edit-actions"><%=link_to "[x]", event, :confirm => 'Are you sure?', :method => :delete %><br/></dd>
   <% end %>
-</dl>
+  </dl>
 </div>

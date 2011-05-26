@@ -3,6 +3,7 @@
 
   <%= form_for Event.new,:html => { :id=> "x_#{event_type}_form" } do |f| %>
     <%= f.hidden_field :event_type, :value => event_type %>
+    <%= f.hidden_field :created_at, :value => @current.to_s %>
     <%= f.submit event_type.titleize %>
   <% end %>
 </div>

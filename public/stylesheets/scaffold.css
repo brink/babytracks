@@ -12,21 +12,12 @@ pre {
   font-size: 11px;
 }
 
-a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
 
 div.field, div.actions {
   float: left;
   margin-bottom: 10px;
 }
 
-#history {
-  display: block;
-  clear: both;
-  overflow: scroll-y;
-  height: 200px;
-}
 #notice {
   color: green;
 }
@@ -71,26 +62,4 @@ ul.hmenu li {
   display: inline;  
 }
 
-#history dl {
-  height: 400px;
-  width: 640px;
-  overflow-y: scroll;
-}
 
-#history dt {
-  clear: both;
-  float: left;
-  width: 100px;
-  margin-left: 5px;
-  border-radius: 5px;
-}
-#history dd {
-  float: left;
-}
-#history dd.edit-actions {
-  opacity: 0.25;
-}
-
-#history dt:hover {
-  background-color: #ccc;
-}

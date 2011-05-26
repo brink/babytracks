@@ -51,7 +51,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(events_path, :notice => 'Event was successfully created.') }
+        format.html { redirect_to(events_path(:date => params[:event][:created_at]), :notice => 'Event was successfully created.') }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }
